@@ -8,6 +8,42 @@
   "alpaca_zh_demo": {
     "file_name": "alpaca_zh_demo.json"
   },
+  "sentencing_train": {
+    "file_name": "811/train.json"
+  },
+  "sentencing_val": {
+    "file_name": "811/val.json"
+  },
+  "sentencing_test": {
+    "file_name": "811/test.json"
+  },
+  "sentencing_rag_train": {
+    "file_name": "811_rag/train.json"
+  },
+  "sentencing_rag_val": {
+    "file_name": "811_rag/validation.json"
+  },
+  "sentencing_rag_test": {
+    "file_name": "811_rag/test.json"
+  },
+  "sentencing_gsm_train": {
+    "file_name": "811_gsm/train.json"
+  },
+  "sentencing_gsm_val": {
+    "file_name": "811_gsm/val.json"
+  },
+  "sentencing_gsm_test": {
+    "file_name": "811_gsm/test.json"
+  },
+  "sentencing_rag_gsm_train": {
+    "file_name": "811_rag_gsm/train.json"
+  },
+  "sentencing_rag_gsm_val": {
+    "file_name": "811_rag_gsm/validation.json"
+  },
+  "sentencing_rag_gsm_test": {
+    "file_name": "811_rag_gsm/test.json"
+  },
   "glaive_toolcall_en_demo": {
     "file_name": "glaive_toolcall_en_demo.json",
     "formatting": "sharegpt",
