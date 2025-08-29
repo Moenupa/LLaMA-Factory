@@ -16,9 +16,9 @@ SAVE_PATH="saves/qwen3-8b"
 MODEL="$SAVE_PATH/lora-16-pk/sft"
 datasets=("sentencing_math12k_test" "sentencing_pk_math12k_test")
 
-# get proper params
+# get infer param template
 INFER_CONFIG=examples/inference/qwen3_lora_eval.yaml
-echo "GPUs assigned by Slurm: $CUDA_VISIBLE_DEVICES, $INFER_CONFIG"
+echo "GPUs: $CUDA_VISIBLE_DEVICES"
 
 set -x
 

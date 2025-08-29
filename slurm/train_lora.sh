@@ -1,18 +1,31 @@
 #!/bin/bash
-#SBATCH -o logs/lora/%j.out
-#SBATCH -e logs/lora/%j.err
-#SBATCH -J Qwen3-LoRA-sft-sentencing
-#SBATCH --partition=a100
 #SBATCH --nodes=1
+#SBATCH --mem-per-gpu=64G
+#SBATCH --cpus-per-gpu=16
+#SBATCH -p a100
+#SBATCH -t 30-00:00:00
+#SBATCH -o logs/legal-lora-train/%j.out
+#SBATCH -e logs/legal-lora-train/%j.err
+#SBATCH -J Legal-Qwen3-8B-LoRA-Train
+#SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
-#SBATCH --mem=128GB
-#SBATCH --time=7-00:00:00
+#SBATCH --array=0
 
-TRAIN_CONFIG=examples/train_lora/qwen3_lora16_rag_sft.yaml
-TRAIN_CONFIG=examples/train_lora/qwen3_lora16_rag_gsm_sft.yaml
+# major settings
+SAVE_PATH="saves/qwen3-8b"
+MODEL_PREFIX="lora16-"
+MODEL_SUFFIX=""
+datasets=("sentencing_gsm" "sentencing_pk_math12k")
 
-echo "GPUs: $CUDA_VISIBLE_DEVICES $TRAIN_CONFIG"
-cat $TRAIN_CONFIG
-echo "------------------------------------------------------------------------------"
+# get training param template
+TRAIN_CONFIG=examples/train_lora/qwen3_lora16_sft.yaml
+echo "GPUs: $CUDA_VISIBLE_DEVICES"
 
-llamafactory-cli train $TRAIN_CONFIG
+set -x
+
+DATASET=${datasets[$SLURM_ARRAY_TASK_ID]}
+MODEL_ALIAS="$MODEL_PREFIX$DATASET$MODEL_SUFFIX"
+llamafactory-cli train $TRAIN_CONFIG \
+    dataset="${DATASET}_train" \
+    eval_dataset="${DATASET}_val" \
+    output_dir=$SAVE_PATH/$MODEL_ALIAS/$MODEL_ALIAS
