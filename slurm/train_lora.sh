@@ -13,7 +13,8 @@
 
 # major settings
 SAVE_PATH="saves/qwen3-8b"
-MODEL_PREFIX="lora16-"
+LORA_RANK=16
+MODEL_PREFIX="lora$LORA_RANK-"
 MODEL_SUFFIX=""
 datasets=("sentencing_gsm" "sentencing_pk_math12k")
 
@@ -26,6 +27,7 @@ set -x
 DATASET=${datasets[$SLURM_ARRAY_TASK_ID]}
 MODEL_ALIAS="$MODEL_PREFIX$DATASET$MODEL_SUFFIX"
 llamafactory-cli train $TRAIN_CONFIG \
+    lora_rank=$LORA_RANK \
     dataset="${DATASET}_train" \
     eval_dataset="${DATASET}_val" \
     output_dir=$SAVE_PATH/$MODEL_ALIAS/$MODEL_ALIAS
