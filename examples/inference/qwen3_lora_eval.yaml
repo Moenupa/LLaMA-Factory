@@ -1,0 +1,27 @@
+### examples/extras/nlg_eval/llama3_lora_predict.yaml
+### model
+model_name_or_path: /public/models/Qwen3-8B
+# adapter_name_or_path: saves/qwen3-8b/lora-16-pk/sft
+
+### method
+stage: sft
+do_train: false
+do_predict: true
+finetuning_type: lora
+
+### dataset
+# eval_dataset: sentencing_fewshot_test
+template: qwen3_nothink
+cutoff_len: 32768
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
+
+### output
+# output_dir: saves/qwen3-8b/lora-16-fewshot-rag/predict
+overwrite_output_dir: true
+
+### eval
+per_device_eval_batch_size: 1
+predict_with_generate: true
+ddp_timeout: 180000000
