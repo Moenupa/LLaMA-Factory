@@ -1,4 +1,40 @@
 {
+  "shandong_alpaca_train": {
+    "file_name": "shandong/alpaca/train.jsonl"
+  },
+  "shandong_alpaca_val": {
+    "file_name": "shandong/alpaca/validation.jsonl"
+  },
+  "shandong_alpaca_test": {
+    "file_name": "shandong/alpaca/test.jsonl"
+  },
+  "shandong_alpaca_rag_train": {
+    "file_name": "shandong/alpaca_rag/train.jsonl"
+  },
+  "shandong_alpaca_rag_val": {
+    "file_name": "shandong/alpaca_rag/validation.jsonl"
+  },
+  "shandong_alpaca_rag_test": {
+    "file_name": "shandong/alpaca_rag/test.jsonl"
+  },
+  "shandong_alpaca_digitonly_train": {
+    "file_name": "shandong/alpaca_digitonly/train.jsonl"
+  },
+  "shandong_alpaca_digitonly_val": {
+    "file_name": "shandong/alpaca_digitonly/validation.jsonl"
+  },
+  "shandong_alpaca_digitonly_test": {
+    "file_name": "shandong/alpaca_digitonly/test.jsonl"
+  },
+  "shandong_alpaca_digitonly_rag_train": {
+    "file_name": "shandong/alpaca_digitonly_rag/train.jsonl"
+  },
+  "shandong_alpaca_digitonly_rag_val": {
+    "file_name": "shandong/alpaca_digitonly_rag/validation.jsonl"
+  },
+  "shandong_alpaca_digitonly_rag_test": {
+    "file_name": "shandong/alpaca_digitonly_rag/test.jsonl"
+  },
   "identity": {
     "file_name": "identity.json"
   },

@@ -29,7 +29,6 @@ set -x
 
 DATASET=${datasets[$SLURM_ARRAY_TASK_ID]}
 llamafactory-cli train $TRAIN_CONFIG \
-	adapter_name_or_path=$SAVE_DIR/lora-16-pk/sft \
 	lora_rank=$LORA_RANK \
 	dataset="${DATASET}_train" \
 	eval_dataset="${DATASET}_val" \
