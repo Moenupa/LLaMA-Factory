@@ -11,6 +11,7 @@
 #SBATCH --gres=gpu:1
 ###SBATCH --array=0-0
 datasets=()
+DISABLE_VERSION_CHECK=1
 
 # TODO: change settings here
 SAVE_DIR="saves/qwen25vl-7b"				# root dir, -> accd. to base model

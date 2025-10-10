@@ -10,24 +10,28 @@
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 ###SBATCH --array=0-0
+DISABLE_VERSION_CHECK=1
 datasets=()
 
 # TODO: change settings here
 SAVE_DIR="saves/qwen3-8b"				# root dir, -> accd. to base model
-LORA_RANK=16							# LoRA rank
+LORA_RANK=32							# LoRA rank
 # model alias = prefix + dataset + suffix
 MODEL_PREFIX="lora$LORA_RANK-"
 MODEL_SUFFIX=""
-MODEL_ALIAS="${MODEL_PREFIX}${DATASET}${MODEL_SUFFIX}"
-MODEL="$SAVE_DIR/$MODEL_ALIAS/${MODEL_ALIAS}"
 # one array item = one training = one model
-datasets+=("sentencing_0926")
+datasets+=("shandong_alpaca")
+datasets+=("shandong_alpaca_rag")
+datasets+=("shandong_alpaca_digitonly")
+datasets+=("shandong_alpaca_digitonly_rag")
 
 TRAIN_CONFIG=examples/train_lora/qwen3_lora16_sft.yaml
 echo "GPUs: $CUDA_VISIBLE_DEVICES"
 set -x
 
 DATASET=${datasets[$SLURM_ARRAY_TASK_ID]}
+MODEL_ALIAS="${MODEL_PREFIX}${DATASET}${MODEL_SUFFIX}"
+MODEL="$SAVE_DIR/$MODEL_ALIAS/${MODEL_ALIAS}"
 llamafactory-cli train $TRAIN_CONFIG \
 	lora_rank=$LORA_RANK \
 	dataset="${DATASET}_train" \

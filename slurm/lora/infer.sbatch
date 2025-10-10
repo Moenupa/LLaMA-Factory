@@ -10,6 +10,7 @@
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
 ###SBATCH --array=0-0
+DISABLE_VERSION_CHECK=1
 datasets=()
 
 # TODO: change settings here
