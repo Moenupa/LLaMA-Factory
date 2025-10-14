@@ -54,7 +54,7 @@ dependencies = [
     "librosa",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 torch = [
     "torch>=2.7.1",
     "torchvision>=0.22.1",
@@ -63,7 +63,10 @@ flash_attn = [
     "flash-attn==2.8.2",
     "flashinfer-python",
 ]
-deepspeed = ["deepspeed>=0.10.0,<=0.16.9"]
+deepspeed = [
+    "deepspeed>=0.10.0,<=0.16.9",
+    "deepspeed-kernels",
+]
 bitsandbytes=["bitsandbytes>=0.39.0"]
 metrics = [
     "nltk",
@@ -75,6 +78,8 @@ galore = ["galore-torch"]
 apollo = ["apollo-torch"]
 badam = ["badam>=1.2.1"]
 wandb = ["wandb"]
+
+[dependency-groups]
 dev = [
     "pre-commit",
     "ruff",
